@@ -1,165 +1,171 @@
 package View;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import javax.swing.Icon;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JEditorPane;
-import javax.swing.JLabel;
-import java.awt.Font;
-import java.awt.Image;
-
 import javax.swing.JTextArea;
-import javax.swing.JCheckBox;
+import javax.swing.SwingConstants;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 import java.awt.Color;
 import java.awt.Desktop;
-
-import javax.swing.UIManager;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.net.URI;
-import javax.swing.ImageIcon;
-import java.awt.Dimension;
+import java.awt.Cursor;
 
 public class TelaHome extends JFrame {
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
-	private JLabel lblImagemUnifacs;
+    private static final long serialVersionUID = 1L;
+    private JPanel contentPane;
+    private final JPanel panel = new JPanel();
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaHome frame = new TelaHome();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+    /**
+     * Launch the application.
+     */
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    TelaHome frame = new TelaHome();
+                    frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
-	/**
-	 * Create the frame.
-	 */
-	public TelaHome() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 779, 562);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+    /**
+     * Create the frame.
+     */
+    public TelaHome() {
+        setUndecorated(true);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100, 100, 1366, 768);
+        setLocationRelativeTo(null);
+        contentPane = new JPanel();
+        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        setContentPane(contentPane);
+        contentPane.setLayout(null);
+        panel.setBackground(new Color(250, 250, 250));
+        panel.setBounds(0, 0, 1366, 768);
+        contentPane.add(panel);
+        panel.setLayout(null);
 
-		setContentPane(contentPane);
-		
-		JButton btnHome = new JButton("Home");
-		btnHome.setBounds(120, 20, 99, 46);
-		btnHome.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnHome.setBorder(UIManager.getBorder("TextArea.border"));
-		btnHome.setForeground(Color.BLACK);
-		btnHome.setBackground(Color.GRAY);
-		
-		JButton btnCalculadoraDeMacros = new JButton("Calculadora de Macros");
-		btnCalculadoraDeMacros.setBounds(254, 21, 180, 46);
-		btnCalculadoraDeMacros.setForeground(Color.BLACK);
-		btnCalculadoraDeMacros.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnCalculadoraDeMacros.setBorder(UIManager.getBorder("TextPane.border"));
-		btnCalculadoraDeMacros.setBackground(Color.GRAY);
-		btnCalculadoraDeMacros.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaCalculadora tc = new TelaCalculadora();
-				tc.setVisible(true);
-				dispose();
-				
-			}
-		});
-		
-		String txtDescricao = "Somos um grupo de estudantes que resolveram realizar um prótotipo de aplicação para nosso trabalho da faculdade, \\r\\nvoltado para a saude e o bem estar dos nossos usuarios. \\r\\r\\n\\r\\r\\nNossa ideia é facilitar e otimizar o processo de iniciação em dietas para pessoas que nao tem condição \\r\\nou conhecimento para montar uma dieta que atenda suas necessidades físicas e psicológicas.";
-		
-		JTextArea textAreaDescricao = new JTextArea();
-		textAreaDescricao.setBounds(351, 143, 357, 257);
-		textAreaDescricao.setFont(new Font("Lucida Sans Typewriter", Font.ITALIC, 13));
-		textAreaDescricao.setLineWrap(true);
-		textAreaDescricao.setText("Somos um grupo de estudantes que resolveram realizar um prótotipo de aplicação para nosso trabalho da faculdade, voltado para a saude e o bem estar dos nossos usuarios. \r\n\r\n\n\nNossa ideia é facilitar e otimizar o processo de iniciação em dietas para pessoas que nao tem condição ou conhecimento para montar uma dieta que atenda suas necessidades físicas e psicológicas.");
-		
-		JLabel lblNewLabel = new JLabel("Sobre nós:");
-		lblNewLabel.setBounds(481, 115, 75, 17);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		
-		JLabel lblGitHUB = new JLabel("GitHub");
-		lblGitHUB.setBounds(30, 479, 78, 33);
-		 lblGitHUB.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				
-				 try {
-	                    // Abre o navegador padrão com o link especificado
-	                    Desktop.getDesktop().browse(new URI("https://github.com/Bernardosc1"));
-	                } catch (Exception ex) {
-	                    ex.printStackTrace();
-	                }
-				
-			}
-		});
-		 lblGitHUB.setHorizontalAlignment(SwingConstants.CENTER);
-		 lblGitHUB.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		 lblGitHUB.setForeground(SystemColor.textHighlight);
-		contentPane.setLayout(null);
-		
-		lblImagemUnifacs = new JLabel("");
-		lblImagemUnifacs.setIcon(new ImageIcon("C:\\Users\\berna\\OneDrive\\Documentos\\Programação\\Estudo\\Java\\eclipse-workspace\\ProjetoA03\\assets\\logoUnifacs (2).png"));
-		
-		lblImagemUnifacs.setBounds(575, 463, 150, 48);
-		contentPane.add(lblImagemUnifacs);
-		contentPane.add(textAreaDescricao);
-		contentPane.add(lblNewLabel);
-		contentPane.add(btnHome);
-		contentPane.add(btnCalculadoraDeMacros);
-		contentPane.add(lblGitHUB);
-		
-		JLabel lblLinkedin = new JLabel("Linkedin");
-		lblLinkedin.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				 try {
-	                    // Abre o navegador padrão com o link especificado
-	                    Desktop.getDesktop().browse(new URI("https://www.linkedin.com/in/bernardo-soledade/"));
-	                } catch (Exception ex) {
-	                    ex.printStackTrace();
-	                }
-			}
-		});
-		lblLinkedin.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLinkedin.setForeground(SystemColor.textHighlight);
-		lblLinkedin.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblLinkedin.setBounds(149, 479, 78, 33);
-		contentPane.add(lblLinkedin);
-		
-		JLabel lblImagemLogo = new JLabel("");
-		lblImagemLogo.setIcon(new ImageIcon("C:\\Users\\berna\\OneDrive\\Documentos\\Programação\\Estudo\\Java\\eclipse-workspace\\ProjetoA03\\assets\\img_fitness.jpeg"));
-		
-		lblImagemLogo.setBounds(59, 143, 244, 212);
-		contentPane.add(lblImagemLogo);
-		
-		JButton btnCalculadoraEstrategias = new JButton("Estrategias Recomendadas");
-		btnCalculadoraEstrategias.setForeground(Color.BLACK);
-		btnCalculadoraEstrategias.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnCalculadoraEstrategias.setBorder(UIManager.getBorder("TextPane.border"));
-		btnCalculadoraEstrategias.setBackground(Color.GRAY);
-		btnCalculadoraEstrategias.setBounds(468, 22, 194, 46);
-		contentPane.add(btnCalculadoraEstrategias);
-	}
+        JLabel lblLinkedin = new JLabel("LinkedIn");
+        lblLinkedin.setBounds(951, 589, 80, 30);
+        panel.add(lblLinkedin);
+        lblLinkedin.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Desktop.getDesktop().browse(new URI("https://www.linkedin.com/in/bernardo-soledade/"));
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                lblLinkedin.setForeground(Color.DARK_GRAY);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                lblLinkedin.setForeground(SystemColor.textHighlight);
+            }
+        });
+        lblLinkedin.setHorizontalAlignment(SwingConstants.CENTER);
+        lblLinkedin.setForeground(SystemColor.textHighlight);
+        lblLinkedin.setFont(new Font("Arial", Font.PLAIN, 14));
+
+        JLabel lblGitHUB = new JLabel("GitHub");
+        lblGitHUB.setBounds(878, 589, 80, 30);
+        panel.add(lblGitHUB);
+        lblGitHUB.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                try {
+                    Desktop.getDesktop().browse(new URI("https://github.com/Bernardosc1"));
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                lblGitHUB.setForeground(Color.DARK_GRAY);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                lblGitHUB.setForeground(SystemColor.textHighlight);
+            }
+        });
+        lblGitHUB.setHorizontalAlignment(SwingConstants.CENTER);
+        lblGitHUB.setFont(new Font("Arial", Font.PLAIN, 14));
+        lblGitHUB.setForeground(SystemColor.textHighlight);
+
+        JButton btnNewButton = new JButton("X");
+        btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+        btnNewButton.setBackground(new Color(255, 69, 0));
+        btnNewButton.setForeground(Color.WHITE);
+        btnNewButton.setBounds(1308, 11, 48, 40);
+        btnNewButton.setFont(new Font("Arial", Font.BOLD, 14));
+        btnNewButton.setFocusPainted(false);
+        panel.add(btnNewButton);
+        
+        JLabel lblBtnCalculadora = new JLabel("");
+        lblBtnCalculadora.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        lblBtnCalculadora.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		 TelaCalculadora tc = new TelaCalculadora();
+                 tc.setVisible(true);
+                 dispose();
+        	}
+        });
+        lblBtnCalculadora.setBounds(753, 107, 400, 53);
+        panel.add(lblBtnCalculadora);
+        
+        JLabel lblBtnInformacoes = new JLabel("");
+        lblBtnInformacoes.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        lblBtnInformacoes.setBounds(753, 215, 400, 53);
+        panel.add(lblBtnInformacoes);
+        lblBtnInformacoes.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		TelaInformacoes ti = new TelaInformacoes();
+        		ti.setVisible(true);
+        		dispose();
+        	}
+        });
+        
+        JLabel lblBtnEstrategias = new JLabel("");
+        lblBtnEstrategias.setBounds(753, 321, 400, 53);
+        panel.add(lblBtnEstrategias);
+        
+        
+        JLabel lblBtnSobre = new JLabel("");
+        lblBtnSobre.setBounds(753, 428, 400, 53);
+        panel.add(lblBtnSobre);
+        
+        JLabel lblNewLabel_1 = new JLabel("");
+        
+         lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\berna\\OneDrive\\Área de Trabalho\\A3\\1.png"));
+         lblNewLabel_1.setBounds(0, 0, 1366, 768);
+         panel.add(lblNewLabel_1);
+    }
 }
