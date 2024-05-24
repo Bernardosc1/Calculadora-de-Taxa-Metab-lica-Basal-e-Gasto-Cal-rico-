@@ -1,11 +1,13 @@
 package View;
 
+import Model.Usuario;
+
 public class App {
     public static void main(String[] args) {
-        GerenciadorTelas gerenciador = GerenciadorTelas.getInstance();
-
+        Usuario usuario = new Usuario();
         // Criar instâncias das telas
-        TelaHome telaHome = new TelaHome();
+        TelaHome telaHome = new TelaHome(usuario);
         telaHome.setVisible(true);
+        
     }
 }

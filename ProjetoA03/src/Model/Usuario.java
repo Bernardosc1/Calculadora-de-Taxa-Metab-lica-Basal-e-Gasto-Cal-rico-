@@ -37,13 +37,13 @@ public class Usuario {
     
     //Verificar como está o IMC
     private void verficarIMC(){
-    	  if (IMC < 18.5) {
+    	  if (IMC < 18.50) {
               IMCres = EResultadoIMC.ABAIXO_PESO;
-          } else if (IMC >= 18.5 && IMC <= 24.9) {
+          } else if (IMC >= 18.51 && IMC <= 24.90) {
               IMCres = EResultadoIMC.PESO_IDEAL;
-          } else if (IMC >= 25 && IMC <= 29.9) {
+          } else if (IMC >= 24.91 && IMC <= 29.90) {
               IMCres = EResultadoIMC.SOBRE_PESO;
-          } else if (IMC >= 30) {
+          } else if (IMC >= 29.91) {
               IMCres = EResultadoIMC.OBESIDADE;
           }
     }

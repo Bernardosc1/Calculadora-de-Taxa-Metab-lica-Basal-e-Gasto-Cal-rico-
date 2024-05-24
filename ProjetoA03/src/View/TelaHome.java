@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Model.Usuario;
+
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
@@ -29,23 +32,11 @@ public class TelaHome extends JFrame {
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    TelaHome frame = new TelaHome();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
     /**
      * Create the frame.
      */
-    public TelaHome() {
+    public TelaHome(Usuario usuario) {
         setUndecorated(true);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,8 +51,9 @@ public class TelaHome extends JFrame {
         contentPane.add(panel);
         panel.setLayout(null);
 
-        JLabel lblLinkedin = new JLabel("LinkedIn");
-        lblLinkedin.setBounds(951, 589, 80, 30);
+        JLabel lblLinkedin = new JLabel("");
+        lblLinkedin.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        lblLinkedin.setBounds(979, 627, 38, 33);
         panel.add(lblLinkedin);
         lblLinkedin.addMouseListener(new MouseAdapter() {
             @Override
@@ -87,14 +79,15 @@ public class TelaHome extends JFrame {
         lblLinkedin.setForeground(SystemColor.textHighlight);
         lblLinkedin.setFont(new Font("Arial", Font.PLAIN, 14));
 
-        JLabel lblGitHUB = new JLabel("GitHub");
-        lblGitHUB.setBounds(878, 589, 80, 30);
+        JLabel lblGitHUB = new JLabel("");
+        lblGitHUB.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        lblGitHUB.setBounds(906, 628, 32, 33);
         panel.add(lblGitHUB);
         lblGitHUB.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    Desktop.getDesktop().browse(new URI("https://github.com/Bernardosc1"));
+                    Desktop.getDesktop().browse(new URI("https://github.com/Bernardosc1/Calculadora-de-Taxa-Metabolica-Basal-e-Gasto-Calorico"));
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -132,7 +125,7 @@ public class TelaHome extends JFrame {
         lblBtnCalculadora.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
-        		 TelaCalculadora tc = new TelaCalculadora();
+        		 TelaCalculadora tc = new TelaCalculadora(usuario);
                  tc.setVisible(true);
                  dispose();
         	}
@@ -147,13 +140,22 @@ public class TelaHome extends JFrame {
         lblBtnInformacoes.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
-        		TelaInformacoes ti = new TelaInformacoes();
+        		TelaInformacoes ti = new TelaInformacoes(usuario);
         		ti.setVisible(true);
         		dispose();
         	}
         });
         
         JLabel lblBtnEstrategias = new JLabel("");
+        lblBtnEstrategias.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        lblBtnEstrategias.addMouseListener(new MouseAdapter() {
+        	@Override
+        	public void mouseClicked(MouseEvent e) {
+        		TelaEstrategias te = new TelaEstrategias(usuario);
+        		te.setVisible(true);
+        		dispose();
+        	}
+        });
         lblBtnEstrategias.setBounds(753, 321, 400, 53);
         panel.add(lblBtnEstrategias);
         
@@ -164,7 +166,7 @@ public class TelaHome extends JFrame {
         
         JLabel lblNewLabel_1 = new JLabel("");
         
-         lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\berna\\OneDrive\\Área de Trabalho\\A3\\1.png"));
+         lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\berna\\OneDrive\\Área de Trabalho\\A3\\Site para Link na Bio Alimentação e Restaurante Quente Orgânico Verde.png"));
          lblNewLabel_1.setBounds(0, 0, 1366, 768);
          panel.add(lblNewLabel_1);
     }
